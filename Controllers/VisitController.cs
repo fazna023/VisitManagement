@@ -72,7 +72,7 @@ namespace VisitorManagement.Controllers
                 });
             }
 
-            return Ok(visitDtos);
+            return visitDtos;
         }
 
         [HttpPut("update")]
@@ -94,6 +94,14 @@ namespace VisitorManagement.Controllers
             var dates = await _visitService.GetNoShowDatesAsync();
             return Ok(dates);
         }
+
+        [HttpGet("noshow/{date}")]
+        public async Task<IActionResult> GetNoShowsByDate(DateTime date)
+        {
+            var visits = await _visitService.GetNoShowsByDateAsync(date);
+            return Ok(visits);
+        }
+
 
 
         [HttpGet("report")]

@@ -133,6 +133,16 @@ namespace VisitorManagement.Services
                 .ToListAsync();
         }
 
+        public async Task<List<VisitLog>> GetNoShowsByDateAsync(DateTime date)
+        {
+            return await _context.VisitLogs
+                .Include(v => v.Visitor)
+                .Include(v => v.HostEmployee)
+                .Where(v => v.Status == "No Show" && v.VisitDate.Date == date.Date)
+                .ToListAsync();
+        }
+
+
 
         public async Task<MontlyReport> GetMonthlyReportAsync(int year, int month)
         {

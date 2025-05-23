@@ -13,6 +13,7 @@ namespace VisitorManagement.Services
         Task<List<VisitLog>> GetTodayVisitsAsync(int hostEmployeeId);
         Task<bool> ManualUpdateAsync(VisitLog visit);
         Task<List<DateTime>> GetNoShowDatesAsync();
+        Task<List<VisitLog>> GetNoShowsByDateAsync(DateTime date);
         Task<MontlyReport> GetMonthlyReportAsync(int year, int month);
        
 
